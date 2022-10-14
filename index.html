@@ -1,0 +1,87 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Vue</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        /* .box {
+            padding: 100px 0;
+            width: 400px;
+            text-align: center;
+            background: #ddd;
+            margin: 20px;
+            display: inline-block;
+        } */
+        body{
+            background: #eee;
+            max-width: 960px;
+            margin: 20px auto;
+        }
+        p,h3,ul{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style-type: none;
+            background: #fff;
+            margin:20px auto;
+            padding: 10px 20px;
+            border-radius:10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        li.fav {
+            background: #ff9ed2;
+            color:white;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>HELLO , VUE </h1>
+
+    
+    <div id="app">
+        <!-- attribute binding  -->
+        <!-- dynamic propertities must be add like this v-bind:href short way is :href -->
+        <a :href="url">best web ever</a>
+
+        <!-- Burdaki v-if eğer true ise gösterir false ise gizler -->
+        <div v-if="showBooks">
+            <ul>
+                <li v-for="book in books" v-bind:class="{ fav:book.isFav }" @click="toggleFav(book)">
+                    <img v-bind:src="book.img" :alt="book.title">
+                    <h3>{{ book.title }}</h3>
+                    <p>{{ book.author }}</p>
+                </li>
+            </ul>
+        </div>
+
+        <button @click="toggleShowBooks">
+            <span v-if="showBooks">Hide Books</span>
+            <span v-if="!showBooks">Show Books</span>
+        </button>
+
+        <br>
+        <!-- mouse events -->
+        <!-- mouse ile mouseover alanına geldiğimzde handleEvent çalışıyor -->
+        <!-- <div class="box" @mouseover="handleEvent($event,5)">mouseover (enter)</div>
+        <div class="box" @mouseleave="handleEvent">mouseleave</div>
+        <div class="box" @dblclick="handleEvent">double click</div>
+        <div class="box" @mousemove="handleMousemove">position - {{x}} {{y}}</div> -->
+
+        <!-- Burda show ve if farkı if domdan kaldırılıyor fakat show css olarak divi kalıyor ve 'display - none' gibi görünümü değişiyor -->
+        <!-- <div v-show="showBooks">Currently showing book</div> -->
+
+        <!-- <button v-on:click = "age++">Increase age</button>
+        <button v-on:click = "age--">Decrease age</button> -->
+        <!-- <div @click="changeTitle('LordOfTheRings') ">Change Book Title</div> -->
+    </div>
+
+
+    <script src="app.js"></script>
+</body>
+</html>
